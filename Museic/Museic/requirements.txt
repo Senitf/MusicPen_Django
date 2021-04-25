@@ -1,0 +1,14 @@
+Requirement already satisfied: libsass in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (0.20.1)
+Requirement already satisfied: django-compressor in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (2.4)
+Requirement already satisfied: django-sass-processor in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (0.8.2)
+Processing /Users/seni/Library/Caches/pip/wheels/db/70/b0/68e4c732f3266bfca35b71cf9e00709bfeb3da27bc35b1feb4/freeze-3.0-py3-none-any.whl
+Requirement already satisfied: six in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from libsass) (1.15.0)
+Requirement already satisfied: rcssmin==1.0.6 in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django-compressor) (1.0.6)
+Requirement already satisfied: rjsmin==1.1.0 in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django-compressor) (1.1.0)
+Requirement already satisfied: django-appconf>=1.0.3 in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django-compressor) (1.0.4)
+Requirement already satisfied: django in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django-appconf>=1.0.3->django-compressor) (3.1.4)
+Requirement already satisfied: asgiref<4,>=3.2.10 in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django->django-appconf>=1.0.3->django-compressor) (3.3.1)
+Requirement already satisfied: sqlparse>=0.2.2 in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django->django-appconf>=1.0.3->django-compressor) (0.4.1)
+Requirement already satisfied: pytz in /Users/seni/Desktop/Projects/Museic/venv/lib/python3.9/site-packages (from django->django-appconf>=1.0.3->django-compressor) (2020.5)
+Installing collected packages: freeze
+Successfully installed freeze-3.0

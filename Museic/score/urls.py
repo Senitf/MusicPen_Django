@@ -3,5 +3,6 @@ from .views import *
 
 app_name = "score"
 urlpatterns = [
-    path("create/", Create.as_view(), name="create"),
+    path("create/", upload, name="create"),
 ]
+

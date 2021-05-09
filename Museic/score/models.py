@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+import time
+from .funcs import *
 
 # Create your models here.
 
@@ -11,3 +13,10 @@ class ScoreBoard(models.Model):
 
 class Note(models.Model):
     drawingJSONText = models.TextField(null = True)
+
+class NoteIMG(models.Model):
+    file = models.ImageField(upload_to='images')
+    uploaded = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.pk)

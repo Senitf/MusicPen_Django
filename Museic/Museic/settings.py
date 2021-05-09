@@ -57,7 +57,7 @@ ROOT_URLCONF = 'Museic.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,15 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'score', 'static')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_DIRS = [
+    STATIC_DIR,
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-SASS_PROCESSOR_ENABLED = True
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Museic Canvas</title>
+        <link rel="stylesheet" href="{% static 'score/css/style.css' %}">
+        
+    </head>
+    <body>
+        <div class="canvasLine">
+            <span>
+                <canvas id="canvas" class="canvas" width="400" height="100"></canvas>
+                <!--
+                <form action="" method="POST" id="form1">
+                    {% csrf_token %}
+                    <input type="hidden" name="canvasData" id="my_hidden">
+                    <input type="submit" name="submit" value="submit" onclick="save()">
+                </form>
+                -->
+            </span>
+        </div>
+        <script src={% static "score/javascript/canvas.js" %}></script>
+    </body>
+</html>

@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from .models import *
 import json
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+import re
+from .forms import ImageForm
 
 # Create your views here.
 
@@ -29,7 +31,34 @@ class Index(TemplateView):
     '''
 
 class Create(CreateView):
-    model = Note
-    fields = ['drawingJSONText']
-    template_name = 'score/score_create.html'
+    model = NoteIMG
+    fields = ['title', 'image']
+    template_name_suffix = 'create'
     success_url = '/'
+
+def upload(request):
+    form = ImageForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return JsonResponse({'message':'works'})
+    context = {'form':form}
+    return render(request, 'score/score_create.html', context)
+    '''
+    if request.method == 'POST':
+        new_content = NoteIMG()
+        new_content.title = str(time.time())
+        tmpIMG = request.FILES.get('canvasData')
+        print(tmpIMG)
+        new_content.image = tmpIMG
+        
+        pattern = r'^data:(?P<mime_type>[^;]+);base64,(?P<image>.+)$'
+        result = re.match(pattern, tmpIMG)
+        if result:
+            mime_type = result.group('mime_type')
+            new_content.image = result.group('image').decode('base64')
+        
+        new_content.save()
+        return redirect('score:create')
+    else:
+        return render(request, 'score/score_create.html')
+    '''

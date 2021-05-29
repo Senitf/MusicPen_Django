@@ -20,28 +20,8 @@ from django.core.files.base import ContentFile
 
 from django.views.decorators.csrf import csrf_exempt
 
-# Create your views here.
-def upload(request):
-    if request.method == 'POST':
-
-        canvasData = request.POST.get('canvasData', '')
-        
-        datauri = canvasData
-
-        imgstr = re.search(r'base64,(.*)', datauri).group(1)
-
-        output = open('output.png', 'wb')
-
-        output.write(imgstr.decode('base64'))
-
-        output.close()
-
-        new_content = NoteIMG()
-        new_content.file = output
-        new_content.save()
-        return render(request, 'score/score_upload.html')
-    else:
-        return render(request, 'score/score_upload.html')
+def index(request):
+    return render(request,"score/score_index.html")
 
 @csrf_exempt
 def paint(request):
@@ -62,5 +42,12 @@ def paint(request):
         new_content = NoteIMG()
         new_content.file = data
         new_content.save()
+
+        '''
+        return_val = model(IMG)
+        return Http('/create', return_val)
+        0 :
+        1 :
+        '''
 
         return HttpResponseRedirect('/create/')

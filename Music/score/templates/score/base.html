@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Music</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'score/css/style.css' %}">
+</head>
+<body onload="pencil();">
+    <div id="navbar">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'create' %}">New</a>
+        <a href="">Library</a>
+        <a href="">Profile</a>
+    </div>
+{% block content %}
+{% endblock %}
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="{% static 'score/javascript/create.js' %}"></script>
+</body>
+</html>

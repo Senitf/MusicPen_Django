@@ -1,9 +1,82 @@
-.canvas{
-    border:1px solid black;
+:root{
+  --main-background-color: rgb(74, 76, 85);
+  --main-text-color: rgb(31, 34, 31);
+  --sub-title-color: gray;
+  --background-color: rgb(92, 125, 175);
+  --song-title-color: #ebeef3;
+  --artist-color: #c9cbd0;
+  --album-color: #b8c0cc;
+  --sidebar-color: rgb(62, 159, 177);
+  --button-hover-color: rgba(5, 80, 114, 0.753);
+  --form-hover-color: gray;
 }
-.canvasLine{
+
+@font-face{
+  font-family: "배민프로";
+  src: url('/static/score/font/BMHANNAPro.ttf');
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: "배민에어";
+  src: url('/static/score/font/BMHANNAAir.ttf');
+  font-weight: normal;
+}
+
+body{
+  margin: 0;
+  height: 100%;
+  font-family: "배민에어";
+  background-color: var(--main-background-color);
+}
+
+/* for base.html navbar */
+
+/* Style the navbar */
+#navbar {
+    overflow: hidden;
+    background-color: #333;
+    margin-bottom: 20px;
+}
+  
+/* Navbar links */
+#navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+  
+/* Page content */
+.content {
+    padding: 16px;
+}
+  
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+  
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 60px;
+}
+
+#canvasLine{
     margin-top:25px;
     margin-bottom:25px;
+}
+
+.canvasLine canvas {
+  border:1px solid black;
+  background-color: white;
+  position  : static;
+  left      : 130px;
+  top       : 40px;
 }
 
 #toolset {
@@ -16,9 +89,10 @@
 }
 
 #paint {
-    position  : absolute;
-    left      : 130px;
-    top       : 40px;
+  background-color: white;
+  position  : static;
+  left      : 130px;
+  top       : 40px;
 }
 
 #colorset {
@@ -29,7 +103,7 @@
 }
  
 #title {
-    position  : absolute:
+    position  : absolute;
     left      : 500px;
 }
 
@@ -39,6 +113,7 @@
     width     : 80px;
     height    : 25px;
     border    : 1px solid #33842a;
+    border-radius: 0 15px 15px 0;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
@@ -50,6 +125,7 @@
     width     : 80px;
     height    : 25px;
     border    : 1px solid #33842a;
+    border-radius: 0 15px 15px 0;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
@@ -61,6 +137,7 @@
     width     : 80px;
     height    : 25px;
     border    : 1px solid #33842a;
+    border-radius: 0 15px 15px 0;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
@@ -72,6 +149,7 @@
     width     : 80px;
     height    : 25px;
     border    : 1px solid #33842a;
+    border-radius: 0 15px 15px 0;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
@@ -83,6 +161,7 @@
     width     : 80px;
     height    : 25px;
     border    : 1px solid #33842a;
+    border-radius: 0 15px 15px 0;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
@@ -94,7 +173,89 @@
     width     : 80px;
     height    : 25px;
     border    : 1px solid #33842a;
+    border-radius: 0 15px 15px 0;
     -webkit-border-radius: 0 15px 15px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
-} 
+}
+
+/* index.html */
+  
+.box {
+  font-family: "배민에어";
+  font-size:30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.625rem;
+}
+  
+.box h2 {
+  margin: 0 0 1.875rem;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+  
+.box .inputBox {
+  position: relative;
+}
+  
+.box .inputBox input {
+  font-family: '배민에어';
+  width: 100%;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.062rem;
+  margin-bottom: 1.875rem;
+  border: none;
+  border-bottom: 0.065rem solid #fff;
+  outline: none;
+  background: transparent;
+  border-radius: 0.625rem;
+}
+  
+.box .inputBox label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: white;
+  pointer-events: none;
+  transition: 0.5s;
+}
+  
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label,
+.box .inputBox input:not([value=""]) ~ label {
+  top: -1.5rem;
+  left: 0;
+  color: white;
+  font-size: 0.75rem;
+}
+  
+.box input[type="submit"] {
+  border: none;
+  outline: none;
+  color: black;
+  background-color: wh;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  border-radius: 0.312rem;
+}
+  
+.box input[type="submit"]:hover {
+  color : white;
+  background-color: rgb(102, 100, 112);
+}
+
+.btn_both{overflow:hidden;clear:both;width:100%}
+.btn_both .fl{float:left}
+.btn_both .fr{float:right}

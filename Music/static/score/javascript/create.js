@@ -1,5 +1,8 @@
-var canvas = document.getElementById("paint");
+var tmp = document.getElementsByTagName("canvas");
+var canvasCnt = 0;
+var canvas = tmp[canvasCnt];
 var ctx = canvas.getContext("2d");
+
 var width = canvas.width, height = canvas.height;
 var curX, curY, prevX, prevY;
 var hold = false;
@@ -37,11 +40,36 @@ function reset (){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas_data = { "pencil": [], "line": [], "rectangle": [], "circle": [], "eraser": [] };
 }
-        
+
+function base (ctx){
+    ctx.strokeRect(0, 0, 400, 100);
+    ctx.beginPath();
+    ctx.moveTo(0, 25);
+    ctx.lineTo(400, 25);
+    ctx.stroke();
+    ctx.moveTo(0, 50);
+    ctx.lineTo(400, 50);
+    ctx.stroke();
+    ctx.moveTo(0, 75);
+    ctx.lineTo(400, 75);
+    ctx.stroke();
+    ctx.moveTo(0, 100);
+    ctx.lineTo(400, 100);
+    ctx.stroke();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.moveTo(397, 100);
+    ctx.lineTo(397, 0);
+    ctx.stroke();
+    ctx.closePath();
+}
+
 // pencil tool
         
 function pencil (){
-        
+    base(ctx);
+
     canvas.onmousedown = function (e){
         curX = e.clientX - canvas.offsetLeft;
         curY = e.clientY - canvas.offsetTop;
@@ -247,11 +275,38 @@ function eraser (){
 }
 
 function save (){
-    var filename = document.getElementById("fname").value;
     var data = JSON.stringify(canvas_data);
-    var image = canvas.toDataURL('image/png');
+    var image = canvas.toDataURL();
     
-    $.post("/create/", { save_fname: filename, save_cdata: data, save_image: image });
-    alert(filename + " saved");
+    $.post("", { data: data, image: image });
+    alert("saved");
     
-} 
+}
+
+function addCanvas() {
+    var x = document.createElement("CANVAS");
+    var ctx = x.getContext("2d");
+    var canvasLine = document.getElementById("canvasLine");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(20, 20, 150, 100);
+    document.canvasLine.appendChild(x);
+}
+
+/* for navbar */
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}

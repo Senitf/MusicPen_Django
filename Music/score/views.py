@@ -20,6 +20,12 @@ from django.core.files.base import ContentFile
 
 from django.views.decorators.csrf import csrf_exempt
 
+from .Model.model import getModel
+from skimage.transform import resize
+import numpy as np
+from io import BytesIO
+from .funcs import data_preprocessing
+
 def index(request):
     return render(request,"score/score_index.html")
 
@@ -39,9 +45,20 @@ def paint(request):
         conn.commit()
         conn.close()
         '''
-        new_content = NoteIMG()
-        new_content.file = data
-        new_content.save()
+        img_bytes = base64.b64decode(imgstr)
+        img = Image.open(BytesIO(img_bytes))
+        img  = np.array(img)
+        img = data_preprocessing(img)
+
+        target_names = ['quarter', 'half', '8th', '16th', 'dot_quarter', 'dot_half', 'dot_8th', 'dot_16th']
+
+        model = getModel()
+        cex = model.predict(img)
+        output = np.argmax(cex)
+        
+        
+        print(cex)
+        print(target_names[output])
 
         '''
         return_val = model(IMG)

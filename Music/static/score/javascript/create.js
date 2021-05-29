@@ -42,6 +42,7 @@ function reset (){
 }
 
 function base (ctx){
+    /*
     ctx.strokeRect(0, 0, 400, 100);
     ctx.beginPath();
     ctx.moveTo(0, 25);
@@ -63,6 +64,7 @@ function base (ctx){
     ctx.lineTo(397, 0);
     ctx.stroke();
     ctx.closePath();
+    */
 }
 
 // pencil tool
@@ -286,10 +288,17 @@ function save (){
 function addCanvas() {
     var x = document.createElement("CANVAS");
     var ctx = x.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(20, 20, 150, 100);
+    document.body.appendChild(x);
+/*
+    var x = document.createElement("CANVAS");
+    var ctx = x.getContext("2d");
     var canvasLine = document.getElementById("canvasLine");
     ctx.fillStyle = "#FF0000";
     ctx.fillRect(20, 20, 150, 100);
     document.canvasLine.appendChild(x);
+*/
 }
 
 /* for navbar */

@@ -42,6 +42,7 @@ function reset (){
 }
 
 function base (ctx){
+    /*
     ctx.strokeRect(0, 0, 400, 100);
     ctx.beginPath();
     ctx.moveTo(0, 25);
@@ -63,6 +64,7 @@ function base (ctx){
     ctx.lineTo(397, 0);
     ctx.stroke();
     ctx.closePath();
+    */
 }
 
 // pencil tool

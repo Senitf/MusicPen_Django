@@ -1,7 +1,6 @@
 import numpy as np
 from skimage.transform import resize
 from PIL import Image
-import matplotlib.pyplot as plt
 
 def data_preprocessing(image):
     new_image = np.zeros((100,400))
@@ -32,5 +31,5 @@ def data_preprocessing(image):
     tmpIMG = resize(img, (200,64))
     data = tmpIMG.reshape(1, tmpIMG.shape[0], tmpIMG.shape[1], 1)
 
-    plt.imshow(tmpIMG)
+
     return data

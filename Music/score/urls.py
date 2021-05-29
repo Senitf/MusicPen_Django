@@ -18,6 +18,6 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('upload/', upload, name='upload'),
     path('create/', paint, name='create'),
+    path('', index, name='index'),
 ]

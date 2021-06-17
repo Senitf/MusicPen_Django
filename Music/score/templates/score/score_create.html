@@ -1,12 +1,25 @@
 {% extends 'score/base.html' %}
 
 {% block content %}
-<div id="content">
-    <div id="canvasLine">
-        <canvas id="paint" width="400" height="100" onclick="save()">Update your browser to support HTML5 Canvas</canvas>
-    </div>
-    <div>
-        <button id="add" onclick="addCanvas()">Add Canvas</button>
-    </div>
+
+<div class="content" style="margin-left : 100px">
+    <input type="radio" id="content0" name="curCanvas" value="0" onclick="selectCanvas(this.value)" style="position: relative;" checked>
+    <canvas id="under0_0" width="400" height="100" style="background-color: white; z-index: 0;">Update your browser to support HTML5 Canvas</canvas>
+    <canvas id="canvas0_0" width="400" height="100" onclick="save()" style="z-index: 1;">Update your browser to support HTML5 Canvas</canvas>
+</div>
+<div class="content">
+    <input type="radio" id="content1" name="curCanvas" value="1" onclick="selectCanvas(this.value)" style="position: relative;">
+    <canvas id="under0_1" width="400" height="100" style="background-color: white; z-index: 0;">Update your browser to support HTML5 Canvas</canvas>
+    <canvas id="canvas0_1" width="400" height="100" onclick="save()" style="z-index: 1;">Update your browser to support HTML5 Canvas</canvas>
+</div>
+<div class="content">
+    <input type="radio" id="content2" name="curCanvas" value="2" onclick="selectCanvas(this.value)" style="position: relative;">
+    <canvas id="under0_2" width="400" height="100" style="background-color: white; z-index: 0;">Update your browser to support HTML5 Canvas</canvas>
+    <canvas id="canvas0_2" width="400" height="100" onclick="save()" style="z-index: 1;">Update your browser to support HTML5 Canvas</canvas>
+</div>
+<div class="content">
+    <input type="radio" id="content3" name="curCanvas" value="3" onclick="selectCanvas(this.value)" style="position: relative;">
+    <canvas id="under0_4" width="400" height="100" style="background-color: white; z-index: 0;">Update your browser to support HTML5 Canvas</canvas>
+    <canvas id="canvas0_4" width="400" height="100" onclick="save()" style="z-index: 1;">Update your browser to support HTML5 Canvas</canvas>
 </div>
 {% endblock %}

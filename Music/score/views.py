@@ -32,9 +32,12 @@ def index(request):
 @csrf_exempt
 def paint(request):
     if request.method == 'GET':
-        return render(request, 'score/score_create.html')
+        outputli = []
+        output = -1
+        return render(request, 'score/score_create.html', {'output':output})
     if request.method == 'POST':
-        image = request.POST.__getitem__('image')
+        #image = request.POST.__getitem__('image')
+        image = request.POST.get('image', None)
 
         format, imgstr = image.split(';base64,') 
         ext = format.split('/')[-1] 
@@ -53,12 +56,20 @@ def paint(request):
         target_names = ['quarter', 'half', '8th', '16th', 'dot_quarter', 'dot_half', 'dot_8th', 'dot_16th']
 
         model = getModel()
-        cex = model.predict(img)
-        output = np.argmax(cex)
+        modelpredict = model.predict(img)
+        output = np.argmax(modelpredict)
         
         
-        print(cex)
+        print(modelpredict)
         print(target_names[output])
+
+        #save model
+        '''
+        tmpModel = NoteIMG()
+        tmpModel.file = data
+        tmpModel.save()
+        '''
+
 
         '''
         return_val = model(IMG)
@@ -66,5 +77,8 @@ def paint(request):
         0 :
         1 :
         '''
+        context = {
+            'output' : int(output)
+        }
 
-        return HttpResponseRedirect('/create/')
+        return HttpResponse(json.dumps(context), content_type="application/json")
